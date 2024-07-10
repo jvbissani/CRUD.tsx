@@ -2,8 +2,10 @@ import { User } from "@/core/model/User";
 import TextInput from "../shared/TextInput";
 
 export interface UserFormProps{
-  user: User
-  onChange: (user: User) => void
+  user: Partial<User>
+  onChange: (user: Partial<User>) => void
+  Save: () => void
+  Cancel: () => void
 }
 
 export default function UserForm(props: UserFormProps){
@@ -34,15 +36,15 @@ export default function UserForm(props: UserFormProps){
         }
       />
       <div className="flex gap-5">
-        <button className="bg-blue-500 px-4 py-2 rounded-md">
+        <button className="bg-blue-500 px-4 py-2 rounded-md" onClick={props.Save}>
           Save
         </button>
-        <button className="bg-zinc-500 px-4 py-2 rounded-md">
+        <button className="bg-zinc-500 px-4 py-2 rounded-md" onClick={props.Cancel}>
           Cancel
         </button>
       </div>
 
-    </div>
+    </div>             
   )
 
 }

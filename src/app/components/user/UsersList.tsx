@@ -1,13 +1,17 @@
-import users from "@/app/data/constants/users";
-import UserRow from "./UserRow";
 import { User } from "@/core/model/User";
+import UserRow from "./UserRow";
 
-export default function UserList() {
+export interface UserListProps {
+  users: User[];
+  onClick?: (user: User) => void;
+}
+
+export default function UserList(props: UserListProps) {
   return (
-      <div className="flex flex-col gap-4">
-        {users.map((users: User)=> {
-          return <UserRow key={users.id!} User={users} />
-        })}
-      </div>
-  )
+    <div className="flex flex-col gap-4">
+      {props.users.map((user: User) => (
+        <UserRow key={user.id!} User={user} onClick={props.onClick} />
+      ))}
+    </div>
+  );
 }

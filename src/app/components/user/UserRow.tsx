@@ -3,11 +3,13 @@ import Image from "next/image"
 
 export interface RowUserProps {
   User: User
+  onClick?: (user: User) => void
 }
 
 export default function UserRow(props: RowUserProps){
   return (
-    <div className="flex bg-zinc-900 items-center gap-5 p-4 rounded-md">
+    <div className="flex bg-zinc-900 items-center gap-5 p-4 rounded-md cursor-pointer"
+    onClick={()=> props.onClick?.(props.User)}>
       <Image
         src="https://picsum.photos/80"
         width={80}
