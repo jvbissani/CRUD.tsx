@@ -26,4 +26,10 @@ export default class UserRepository {
     return user as User
   }
 
+  static async delete(id: string): Promise<void>{
+    await this.db.user.delete({
+      where: { id }
+    })
+  }
+
 }
